@@ -1,0 +1,31 @@
+#Convert 16 bit to 8 bit registers
+into device label EC0 code_regex B0C3,\s+16, replace_matched begin B030,8,B031,8, end;
+into device label EC0 code_regex B0SN,\s+16, replace_matched begin SN00,8,SN01,8, end;
+into device label EC0 code_regex B1SN,\s+16 replace_matched begin SN10,8,SN11,8 end;
+
+#Create B1B2 Method
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+#Fix 16 bit registers
+into_all method label BIFA code_regex \(B0SN, replaceall_matched begin (B1B2(SN00,SN01), end;
+into_all method label BIFA code_regex \(B1SN, replaceall_matched begin (B1B2(SN10,SN11), end;
+
+#GU502 requires this fix to compile
+into method label _BIX code_regex \(B0C3, replaceall_matched begin (B1B2(B030,B031), end;
+
+#fix logic error in some newer ASUS DSDTs (issue #23)
+into method label FBST code_regex If\s\(CHGS\s\(Zero\)\)[\s]+\{[\s]+Store\s\(0x02,\sLocal0\)[\s]+\}[\s]+Else[\s]+\{[\s]+Store\s\(One,\sLocal0\)[\s]+\} replaceall_matched
+begin
+If (CHGS (Zero))\n
+{\n
+    Store (0x02, Local0)\n
+}\n
+Else\n
+{\n
+    Store (Zero, Local0)\n
+}
+end;

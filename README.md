@@ -10,8 +10,8 @@ You can display the battery power without charging. You can open the switch in t
 If your battery is disabled, please patch battery_ASUS_ROG-GU502GU to DSDT.
 
 Sleep: possible.
-I tested it 20 minutes, system can be waked up, but I didn't test other time.
-Please test it by yourselves.
+I tested it for 2.5 hours, PC can be waked up by Trackpad, but I didn't test for other time.
+Please test it by yourself.
 
 This EFI can be satisfying for daily use.
 
@@ -27,8 +27,8 @@ I put a theme into this EFI, which was designed by myself. You can change it in 
 如果电量还是不能显示的话，请给DSDT打上 battery_ASUS_ROG-GU502GU 这个补丁。
 
 睡眠：应该可以用
-因为我只测试了20分钟睡眠，是能唤醒的，但其他时间我没测试过，可以自行测试。
+因为我只测试2个半小时，是能用触摸板唤醒的，但其他时间我没测试过，可以自行测试。
 
 这个EFI能满足日常使用的了，后续完善难度较高，我尽量吧。
 
-主题内置了一个我自己设计的主题，不喜欢的话可以更换。
+Clover内置了一个我自己设计的主题，不喜欢的话可以更换。

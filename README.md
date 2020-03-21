@@ -6,7 +6,7 @@ This EFI is only for Mojave 10.14.6 18G87. I will update after MacOS 10.16 beta.
 If your Trackpad is disabled, please change GPIO Pin in ACPI/patched/DSDT.
 Search "ETPD" in DSDT, you will find a Pin List, change it by following the results what you searched on the Google or Baidu.
 
-You can display the battery power without charging. You can open the switch in the settings
+You can display the battery power without charging. You can open the switch in the settings. 
 If your battery is disabled, please patch battery_ASUS_ROG-GU502GU to DSDT.
 
 Sleep: possible.
